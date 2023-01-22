@@ -1,0 +1,29 @@
+﻿@model IEnumerable<City>
+
+@{
+  ViewData["Title"] = "City";
+}
+
+<h2>City</h2>
+<h6>Province: @ViewBag.provinceName</h6>
+<a asp-action="Province" asp-controller="Home" class="btn btn-primary">Back to Province</a>
+
+<hr>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>City Name</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbod>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>@item.Name</td>
+        <td><a asp-action="Street" asp-controller="Home" asp-route-provinceName="@ViewBag.provinceName" asp-route-cityName="@item.Name" class="btn btn-warning">Show Streets</a></td>
+      </tr>
+    }
+  </tbod>
+</table>
